@@ -9,12 +9,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link href="<c:url value='css/main.css' />" rel="stylesheet" type="text/css">
 <title>Score Board</title>
-<jsp:include page="include/Header.jsp"></jsp:include>
+<jsp:include page="include/Header.jsp" />
 <style type="text/css">
 .dropdown{
 float:left;
-margin-right:5px;
+margin-right:20px;
+}
+span{
+	padding-top:5px;
+	margin-right:10px;
 }
 </style>
 </head>
@@ -30,7 +35,7 @@ margin-right:5px;
 				<div class="dropdown">
 					<button class="btn btn-default dropdown-toggle" type="button"
 						id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-						Dropdown <span class="caret"></span>
+						전체 <span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu" role="menu"
 						aria-labelledby="dropdownMenu1">
@@ -44,11 +49,11 @@ margin-right:5px;
 							href="#">Separated link</a></li>
 					</ul>
 				</div>
-				<span style="float:left;">영화</span>
+				<span style="float:left;">지역</span>
 				<div class="dropdown">
 					<button class="btn btn-default dropdown-toggle" type="button"
 						id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-						Dropdown <span class="caret"></span>
+						전체 <span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu" role="menu"
 						aria-labelledby="dropdownMenu1">
@@ -62,11 +67,11 @@ margin-right:5px;
 							href="#">Separated link</a></li>
 					</ul>
 				</div>
-				<span style="float:left;">영화</span>
+				<span style="float:left;">극장</span>
 				<div class="dropdown">
 					<button class="btn btn-default dropdown-toggle" type="button"
 						id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-						Dropdown <span class="caret"></span>
+						전체 <span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu" role="menu"
 						aria-labelledby="dropdownMenu1">
@@ -80,11 +85,11 @@ margin-right:5px;
 							href="#">Separated link</a></li>
 					</ul>
 				</div>
-				<span style="float:left;">영화</span>
+				<span style="float:left;">구분</span>
 				<div class="dropdown">
 					<button class="btn btn-default dropdown-toggle" type="button"
 						id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-						Dropdown <span class="caret"></span>
+						전체 <span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu" role="menu"
 						aria-labelledby="dropdownMenu1">
@@ -98,11 +103,11 @@ margin-right:5px;
 							href="#">Separated link</a></li>
 					</ul>
 				</div>
-				<span style="float:left;">영화</span>
+				<span style="float:left;">필름</span>
 				<div class="dropdown">
 					<button class="btn btn-default dropdown-toggle" type="button"
 						id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-						Dropdown <span class="caret"></span>
+						전체 <span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu" role="menu"
 						aria-labelledby="dropdownMenu1">
@@ -117,9 +122,13 @@ margin-right:5px;
 					</ul>
 				</div>
 				
-				<button class="btn btn-primary" style="float:rigth;">검색</button>
+				<button class="btn btn-danger pull-right" style="float:rigth;">엑셀출력</button>
+				<button class="btn btn-primary pull-right" style="float:rigth;" type="button"
+				onclick="SearchFunction()">검색</button>
+				
 			</div>
 		</div>
 	</div>
 </body>
+<script type="text/javascript" src="<c:url value='js/main.js' />"></script>
 </html>

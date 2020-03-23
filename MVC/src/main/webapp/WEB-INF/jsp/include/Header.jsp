@@ -9,6 +9,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<style type="text/css">
+		.nav navbar-nav{
+		text-align:center;
+		}
+	</style>
 <title>Header</title>
 <nav class="navbar navbar-default">
 <div class="container-fluid">
@@ -25,21 +30,31 @@
 	<!-- Collect the nav links, forms, and other content for toggling -->
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		<ul class="nav navbar-nav">
-			<li><a href="#">일일현황 <span class="sr-only">(current)</span></a></li>
+			<li><a href="#">일일회차별현황 <span class="sr-only">(current)</span></a></li>
 
+			<li><a href="#">일일현황</a></li>
+			<li><a href="#">일일현황(합계)</a></li>
 			<li><a href="#">기간현황</a></li>
-			<li class="dropdown"><a href="#" class="dropdown-toggle"
+			<li><a href="#">기간별일일현황</a></li>
+			<li><a href="#">디지털회차체크현황</a></li>
+			<li><a href="#">부금현황(상세)</a></li>
+			<li><a href="#">부금현황</a></li>
+			<li><a href="#">좌점율</a></li>
+			<li><a href="#">극장순위</a></li>
+			
+			<!-- 드롭다운 메뉴 -->
+			<!-- <li class="dropdown"><a href="#" class="dropdown-toggle"
 				data-toggle="dropdown" role="button" aria-expanded="false">메뉴<span class="caret"></span>
 			</a>
 				<ul class="dropdown-menu" role="menu">
 					<li><a href="#">메뉴1</a></li>
 					<li><a href="#">메뉴2</a></li>
 					<li><a href="#">메뉴3</a></li>
-					<!-- <li class="divider"></li>
+					<li class="divider"></li>
             <li><a href="#">Separated link</a></li>
             <li class="divider"></li>
-            <li><a href="#">One more separated link</a></li> -->
-				</ul></li>
+            <li><a href="#">One more separated link</a></li>
+				</ul></li> -->
 		</ul>
 		<!-- <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
@@ -48,13 +63,7 @@
         <button type="submit" class="btn btn-default">Submit</button>
       </form> -->
 		<ul class="nav navbar-nav navbar-right">
-			<li class="dropdown"><a href="#" class="dropdown-toggle"
-				data-toggle="dropdown" role="button" aria-expanded="false">로그인 <span
-					class="caret"></span></a>
-				<ul class="dropdown-menu" role="menu">
-					<li><a href="./Login.do">로그인</a></li>
-					<li><a href="#">회원가입</a></li>
-				</ul></li>
+			<li><a href="./Login.do">로그인</a></li>
 		</ul>
 	</div>
 	<!-- /.navbar-collapse -->
