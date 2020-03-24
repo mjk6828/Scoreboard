@@ -1,14 +1,19 @@
 package com.han.pjt.web;
 
-import java.util.List;
+import java.util.*;
 
 import javax.annotation.Resource;
+import javax.json.JsonObject;
 
+import org.hsqldb.lib.HashMap;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.han.pjt.service.MemberService;
 import com.han.pjt.vo.MemberVO;
 
@@ -42,16 +47,13 @@ public class MainController {
 		return "member/loginForm";
 	}
 	
-	@RequestMapping("/search.do")
-	public String search() throws Exception{
+	@RequestMapping(value = "/search.do", method=RequestMethod.POST)
+	@ResponseBody
+	public List<MemberVO> search(Model model) throws Exception{
 		log.info("호출되나요");
 		List<MemberVO> vo = memberService.memberlist();
 		log.info(vo.size());
-		String result = "";
-		for(int i=0; i<vo.size(); i++) {
-			log.info(vo.get(i).getName());
-			result += vo.get(i).getName();
-		}
-		return result.toString();
+
+		return vo;
 	}
 }
