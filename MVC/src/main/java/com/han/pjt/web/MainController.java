@@ -3,17 +3,15 @@ package com.han.pjt.web;
 import java.util.*;
 
 import javax.annotation.Resource;
-import javax.json.JsonObject;
+import javax.servlet.http.HttpServletResponse;
 
-import org.hsqldb.lib.HashMap;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.han.pjt.service.MemberService;
 import com.han.pjt.vo.MemberVO;
 
@@ -46,14 +44,13 @@ public class MainController {
 		
 		return "member/loginForm";
 	}
-	
-	@RequestMapping(value = "/search.do", method=RequestMethod.POST)
-	@ResponseBody
-	public List<MemberVO> search(Model model) throws Exception{
-		log.info("호출되나요");
-		List<MemberVO> vo = memberService.memberlist();
-		log.info(vo.size());
 
-		return vo;
-	}
+	
+/*	@RequestMapping(value = "/search.do", method=RequestMethod.POST)
+	@ResponseBody
+	public String search(HttpServletResponse response) throws Exception{
+		log.info("호출되나요");
+		
+		return "ajax호출";
+	}*/
 }
