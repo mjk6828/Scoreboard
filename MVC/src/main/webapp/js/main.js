@@ -13,12 +13,6 @@ function SearchFunction(){
 		/*	var result = JSON.parse(data);*/
 			console.log('성공'+data);
 			console.log(data.length);
-			console.log(data.MemberVO.num);
-			console.log(data.id);
-			for(var i = 0; i<data.length; i++){
-				var item = data[i];
-			}
-			console.log(item.name);
 			
 			
 			var html = "";
