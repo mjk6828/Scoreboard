@@ -12,7 +12,7 @@ function SearchFunction(){
 		success : function(data){
 		/*	var result = JSON.parse(data);*/
 			console.log('성공'+data);
-			console.log(data.length);
+			console.log(data.name+data.pass);
 			
 			
 			var html = "";

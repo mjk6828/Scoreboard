@@ -32,16 +32,4 @@ public class JsonController {
 		return vo;
 	}
 	
-	@RequestMapping(value="/search2.do")
-	public ResponseEntity<Map<Integer, MemberVO>> searchmap(){
-		Map<Integer, MemberVO> map = new HashMap<Integer, MemberVO>();
-		for(int i=0; i <= 5; i++) {
-			MemberVO vo = new MemberVO();
-			vo.setName("abc"+i);
-			vo.setNum(i);
-			vo.setPhone(9+i);
-			map.put(i, vo);
-		}
-		return new ResponseEntity<>(map, HttpStatus.OK);
-	}
 }

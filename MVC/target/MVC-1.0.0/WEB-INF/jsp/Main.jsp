@@ -128,6 +128,9 @@ span{
 				
 			</div>
 		</div>
+		<table class="table" id="list">
+		
+		</table>
 	</div>
 </body>
 <script type="text/javascript" src="<c:url value='js/main.js' />"></script>
