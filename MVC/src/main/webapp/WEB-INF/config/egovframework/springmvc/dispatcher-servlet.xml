@@ -26,8 +26,7 @@
 	<bean
 		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
 		<property name="webBindingInitializer">
-			<bean
-				class="egovframework.example.cmmn.web.EgovBindingInitializer" />
+			<bean class="egovframework.example.cmmn.web.EgovBindingInitializer" />
 		</property>
 		<property name="messageConverters">
 			<ref bean="mappingJackson2HttpMessageConverter" />

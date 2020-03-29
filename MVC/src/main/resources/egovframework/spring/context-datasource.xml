@@ -27,22 +27,22 @@
     </bean>
     -->
     
-    <!-- oracle (POM에서 commons-dbcp, ojdbc(라이센스 사항으로 별도로 배포되지 않음) 관련 라이브러리 설정)
+   <!-- oracle -->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-        <property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:example" />
-        <property name="username" value="user"/>
-        <property name="password" value="password"/>
+        <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+        <property name="username" value="scott"/>
+        <property name="password" value="scott"/>
     </bean>
-    -->
+   
       <!-- JDBC-PostgreSQL -->
-
+<!-- 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.postgresql.Driver" />
         <property name="url" value="jdbc:postgresql://localhost:5432/postgres" />
         <property name="username" value="postgres" />
         <property name="password" value="kim30010" />
-    </bean>
+    </bean> -->
     
     
 </beans>

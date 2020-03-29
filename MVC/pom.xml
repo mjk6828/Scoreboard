@@ -53,6 +53,11 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
+		<repository>
+			<id>oracle</id>
+			<name>Oracle JDBC Repository</name>
+			<url>http://repo.spring.io/plugins-release</url>
+		</repository>
 	</repositories>
 
 	<dependencies>
@@ -204,6 +209,14 @@
 							<artifactId>hsqldb</artifactId>
 							<version>2.3.2</version>
 						</dependency>
+						<!-- https://mvnrepository.com/artifact/com.oracle/ojdbc6 -->
+						<dependency>
+							<groupId>com.oracle</groupId>
+							<artifactId>ojdbc6</artifactId>
+							<version>12.1.0.1-atlassian-hosted</version>
+							<scope>test</scope>
+						</dependency>
+
 					</dependencies>
 				</plugin>
 				<!-- EMMA -->
