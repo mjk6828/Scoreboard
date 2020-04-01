@@ -10,4 +10,5 @@ import egovframework.rte.psl.dataaccess.mapper.Mapper;
 public interface BoardDAO {
 
 	List<BoardVO> boardlist() throws Exception;
+	int boardcount() throws Exception;
 }

@@ -7,4 +7,5 @@ import com.han.pjt.vo.BoardVO;
 public interface BoardService {
 
 	List<BoardVO> boardlist() throws Exception;
+	int boardcount() throws Exception;
 }

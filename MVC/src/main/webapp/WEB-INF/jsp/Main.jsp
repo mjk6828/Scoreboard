@@ -9,17 +9,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link href="<c:url value='css/main.css' />" rel="stylesheet" type="text/css">
+<link href="<c:url value='css/main.css' />" rel="stylesheet"
+	type="text/css">
 <title>Score Board</title>
 <jsp:include page="include/Header.jsp" />
 <style type="text/css">
-.dropdown{
-float:left;
-margin-right:20px;
+.dropdown {
+	float: left;
+	margin-right: 20px;
 }
-span{
-	padding-top:5px;
-	margin-right:10px;
+
+span {
+	padding-top: 5px;
+	margin-right: 10px;
 }
 </style>
 </head>
@@ -31,105 +33,60 @@ span{
 				<input type="date" size="5"> <span>까지</span>
 			</div>
 			<div class="panel-body">
-				<span style="float:left;">영화</span>
-				<div class="dropdown">
-					<button class="btn btn-default dropdown-toggle" type="button"
-						id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-						전체 <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu" role="menu"
-						aria-labelledby="dropdownMenu1">
-						<li role="presentation"><a role="menuitem" tabindex="-1"
-							href="#">Action</a></li>
-						<li role="presentation"><a role="menuitem" tabindex="-1"
-							href="#">Another action</a></li>
-						<li role="presentation"><a role="menuitem" tabindex="-1"
-							href="#">Something else here</a></li>
-						<li role="presentation"><a role="menuitem" tabindex="-1"
-							href="#">Separated link</a></li>
-					</ul>
+				<span style="float: left;">영화</span>
+							<div class="dropdown">
+					<select class="form-control">
+						<option>Mustard</option>
+						<option>Ketchup</option>
+						<option>Relish</option>
+					</select>
+
 				</div>
-				<span style="float:left;">지역</span>
-				<div class="dropdown">
-					<button class="btn btn-default dropdown-toggle" type="button"
-						id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-						전체 <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu" role="menu"
-						aria-labelledby="dropdownMenu1">
-						<li role="presentation"><a role="menuitem" tabindex="-1"
-							href="#">Action</a></li>
-						<li role="presentation"><a role="menuitem" tabindex="-1"
-							href="#">Another action</a></li>
-						<li role="presentation"><a role="menuitem" tabindex="-1"
-							href="#">Something else here</a></li>
-						<li role="presentation"><a role="menuitem" tabindex="-1"
-							href="#">Separated link</a></li>
-					</ul>
+				<span style="float: left;">지역</span> 
+								<div class="dropdown">
+					<select class="form-control">
+						<option>Mustard</option>
+						<option>Ketchup</option>
+						<option>Relish</option>
+					</select>
+
 				</div>
-				<span style="float:left;">극장</span>
+				 <span style="float: left;">극장</span>	
 				<div class="dropdown">
-					<button class="btn btn-default dropdown-toggle" type="button"
-						id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-						전체 <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu" role="menu"
-						aria-labelledby="dropdownMenu1">
-						<li role="presentation"><a role="menuitem" tabindex="-1"
-							href="#">Action</a></li>
-						<li role="presentation"><a role="menuitem" tabindex="-1"
-							href="#">Another action</a></li>
-						<li role="presentation"><a role="menuitem" tabindex="-1"
-							href="#">Something else here</a></li>
-						<li role="presentation"><a role="menuitem" tabindex="-1"
-							href="#">Separated link</a></li>
-					</ul>
+					<select class="form-control">
+						<option>Mustard</option>
+						<option>Ketchup</option>
+						<option>Relish</option>
+					</select>
+
 				</div>
-				<span style="float:left;">구분</span>
+			<span style="float: left;">구분</span>
 				<div class="dropdown">
-					<button class="btn btn-default dropdown-toggle" type="button"
-						id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-						전체 <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu" role="menu"
-						aria-labelledby="dropdownMenu1">
-						<li role="presentation"><a role="menuitem" tabindex="-1"
-							href="#">Action</a></li>
-						<li role="presentation"><a role="menuitem" tabindex="-1"
-							href="#">Another action</a></li>
-						<li role="presentation"><a role="menuitem" tabindex="-1"
-							href="#">Something else here</a></li>
-						<li role="presentation"><a role="menuitem" tabindex="-1"
-							href="#">Separated link</a></li>
-					</ul>
+					<select class="form-control">
+						<option>Mustard</option>
+						<option>Ketchup</option>
+						<option>Relish</option>
+					</select>
+
 				</div>
-				<span style="float:left;">필름</span>
+				<span style="float: left;">필름</span>
 				<div class="dropdown">
-					<button class="btn btn-default dropdown-toggle" type="button"
-						id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-						전체 <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu" role="menu"
-						aria-labelledby="dropdownMenu1">
-						<li role="presentation"><a role="menuitem" tabindex="-1"
-							href="#">Action</a></li>
-						<li role="presentation"><a role="menuitem" tabindex="-1"
-							href="#">Another action</a></li>
-						<li role="presentation"><a role="menuitem" tabindex="-1"
-							href="#">Something else here</a></li>
-						<li role="presentation"><a role="menuitem" tabindex="-1"
-							href="#">Separated link</a></li>
-					</ul>
+					<select class="form-control">
+						<option>Mustard</option>
+						<option>Ketchup</option>
+						<option>Relish</option>
+					</select>
+
 				</div>
-				
-				<button class="btn btn-danger pull-right" style="float:rigth;">엑셀출력</button>
-				<button class="btn btn-primary pull-right" style="float:rigth;" type="button"
-				onclick="SearchFunction()">검색</button>
-				
+
+				<button class="btn btn-danger pull-right" style="float: rigth;">엑셀출력</button>
+				<button class="btn btn-primary pull-right" style="float: rigth;"
+					type="button" onclick="SearchFunction()">검색</button>
+
 			</div>
 		</div>
 		<table class="table" id="list">
-		
+
 		</table>
 	</div>
 </body>

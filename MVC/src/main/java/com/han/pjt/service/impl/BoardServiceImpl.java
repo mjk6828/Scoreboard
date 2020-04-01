@@ -26,4 +26,10 @@ public class BoardServiceImpl implements BoardService{
 		return boardDAO.boardlist();
 	}
 
+	@Override
+	public int boardcount() throws Exception {
+		
+		return boardDAO.boardcount();
+	}
+
 }
