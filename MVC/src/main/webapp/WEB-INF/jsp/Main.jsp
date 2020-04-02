@@ -23,6 +23,9 @@ span {
 	padding-top: 5px;
 	margin-right: 10px;
 }
+th{
+	text-align: center;
+}
 </style>
 </head>
 <body>
@@ -34,47 +37,63 @@ span {
 			</div>
 			<div class="panel-body">
 				<span style="float: left;">영화</span>
-							<div class="dropdown">
-					<select class="form-control">
-						<option>Mustard</option>
-						<option>Ketchup</option>
-						<option>Relish</option>
+							<div class="dropdown" >
+					<select class="form-control" id="cinema">
+						
 					</select>
 
 				</div>
 				<span style="float: left;">지역</span> 
 								<div class="dropdown">
-					<select class="form-control">
-						<option>Mustard</option>
-						<option>Ketchup</option>
-						<option>Relish</option>
+					<select class="form-control" id="location">
+						<option value="alllocation">전체</option>
+						<option value="seoul">서울</option>
+						<option value="gyoung">경기,강원</option>
+						<option value="busan">부산,경남</option>
+						<option value="daegu">대구,경북</option>
+						<option value="daejun">대전,충청</option>
+						<option value="gwangju">광주,호남</option>
 					</select>
 
 				</div>
 				 <span style="float: left;">극장</span>	
 				<div class="dropdown">
-					<select class="form-control">
-						<option>Mustard</option>
-						<option>Ketchup</option>
-						<option>Relish</option>
+					<select class="form-control" id="theater">
+						<option value="alltheater">전체</option>
+						<option value="cgv">CGV</option>
+						<option value="lottee">롯데시네마</option>
+						<option value="mega">메가박스</option>
+						<option value="free">프리머스</option>
+						<option value="normal">일반</option>
 					</select>
 
 				</div>
 			<span style="float: left;">구분</span>
 				<div class="dropdown">
-					<select class="form-control">
-						<option>Mustard</option>
-						<option>Ketchup</option>
-						<option>Relish</option>
+					<select class="form-control" id="division">
+						<option value="alldivision">전체</option>
+						<option value="direct">직영점</option>
+						<option value="commission">위탁점</option>
+						<option value="solo">개인점</option>
 					</select>
 
 				</div>
 				<span style="float: left;">필름</span>
 				<div class="dropdown">
-					<select class="form-control">
-						<option>Mustard</option>
-						<option>Ketchup</option>
-						<option>Relish</option>
+					<select class="form-control" id="film">
+						<option value="allfilm">전체</option>
+						<option value="35mm">35mm</option>
+						<option value="imax4d">IMAX 4D</option>
+						<option value="digital4d">디지털 4D</option>
+						<option value="atomos4d">ATOMOS 4D</option>
+						<option value="digital2d">디지털 2D</option>
+						<option value="digital3d">디지털 3D</option>
+						<option value="digitaldubbing">디지털 더빙</option>
+						<option value="digital3ddubbing">디지털3D 더빙</option>
+						<option value="imax2d">아이맥스 2D</option>
+						<option value="imax3d">아이맥스 3D</option>
+						<option value="atomos2d">ATOMOS 2D</option>
+						<option value="atomos3d">ATOMOS 3D</option>
 					</select>
 
 				</div>
@@ -85,7 +104,7 @@ span {
 
 			</div>
 		</div>
-		<table class="table" id="list">
+		<table class="table" id="list" style="text-align: center;">
 
 		</table>
 	</div>

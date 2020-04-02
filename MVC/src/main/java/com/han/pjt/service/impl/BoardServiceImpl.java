@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.han.pjt.dao.BoardDAO;
 import com.han.pjt.service.BoardService;
 import com.han.pjt.vo.BoardVO;
+import com.han.pjt.vo.SelectVO;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -21,9 +22,9 @@ public class BoardServiceImpl implements BoardService{
 	private BoardDAO boardDAO;
 	
 	@Override
-	public List<BoardVO> boardlist() throws Exception {
+	public List<BoardVO> boardlist(SelectVO svo) throws Exception {
 		log.info("게시판 목록 조회");
-		return boardDAO.boardlist();
+		return boardDAO.boardlist(svo);
 	}
 
 	@Override

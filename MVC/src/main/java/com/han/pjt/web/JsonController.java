@@ -39,8 +39,9 @@ public class JsonController {
 	@RequestMapping("/boardsearch.do")
 	public HashMap<String, Object> boardsearch(SelectVO svo) throws Exception{
 		log.info("게시판호출");
+		log.info(svo.getCinema()+svo.getDivision()+svo.getFilm()+svo.getLocation()+svo.getTheater());
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		List<BoardVO> boardlist = boardService.boardlist();
+		List<BoardVO> boardlist = boardService.boardlist(svo);
 		int boardcount = boardService.boardcount();
 		map.put("result", boardlist);
 		map.put("count", boardcount);
