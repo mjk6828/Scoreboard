@@ -24,13 +24,13 @@
 </head>
 <body>
 	<c:choose>
-		<c:when test="${loginID ne null}">
+		<c:when test="${login.id ne null}">
 			<div class="container">
 <jsp:include page="../include/Header.jsp" />
 			<table class="table table-bordered">
 				<tr>
 					<td align="center"><h2>
-						<c:out value="${loginID}" /> 님 환영합니다.</h2><br>
+						<c:out value="${login.id}" /> 님 환영합니다.</h2><br>
 						<button type="button" class="loginbtn"
 						onclick="document.location.href='/Temp/page/main.jsp'">
 						<b>메인페이지 이동</b>
@@ -53,7 +53,7 @@
 				</script>
 			</c:if>
 			<jsp:include page="../include/Header.jsp" />
-			<form action="/Temp/membercontrol/LoginProc.do"
+			<form action="./LoginForm.do"
 				id="loginform" method="post">
 
 				<div class="container" id="login">

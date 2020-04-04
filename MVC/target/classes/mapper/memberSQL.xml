@@ -3,7 +3,25 @@
 <mapper namespace="com.han.pjt.dao.MemberDAO">
 
 <select id="memberlist" resultType="com.han.pjt.vo.MemberVO">
-select * from public.user
+select
+		num,
+		id,
+		pass,
+		name,
+		email,
+		phone
+from public.user
 </select>
 
+<select id="memberone" parameterType="String" resultType="com.han.pjt.vo.MemberVO">
+select
+		num,
+		id,
+		pass,
+		name,
+		email,
+		phone
+from public.user
+where id=#{id}
+</select>
 </mapper>

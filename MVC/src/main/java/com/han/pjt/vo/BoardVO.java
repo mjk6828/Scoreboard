@@ -18,12 +18,9 @@ public class BoardVO {
 	private String subject;
 	private String pass;
 	private int readcount;
-	private int ref;
-	private int step;
-	private int depth;
 	private Date regdate;
 	private String content;
-	private String b_type;
+	private String type;
 	
 	
 }

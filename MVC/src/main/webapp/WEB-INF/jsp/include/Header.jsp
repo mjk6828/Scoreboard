@@ -9,17 +9,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-	<style type="text/css">
-		.nav navbar-nav{
-		text-align:center;
-		}
-		#navbarHeader{
-		background-color:black;
-		color:white;
-		font-weight:bold;
-		font-size:15px;
-		}
-	</style>
+<style type="text/css">
+.nav navbar-nav {
+	text-align: center;
+}
+
+#navbarHeader {
+	background-color: black;
+	color: white;
+	font-weight: bold;
+	font-size: 15px;
+}
+</style>
 <title>Header</title>
 <nav class="navbar navbar-default" id="navbarHeader">
 <div class="container-fluid">
@@ -47,7 +48,7 @@
 			<li><a href="#">부금현황</a></li>
 			<li><a href="#">좌점율</a></li>
 			<li><a href="#">극장순위</a></li>
-			
+
 			<!-- 드롭다운 메뉴 -->
 			<!-- <li class="dropdown"><a href="#" class="dropdown-toggle"
 				data-toggle="dropdown" role="button" aria-expanded="false">메뉴<span class="caret"></span>
@@ -68,9 +69,32 @@
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form> -->
-		<ul class="nav navbar-nav navbar-right">
-			<li><a href="./Login.do">로그인</a></li>
-		</ul>
+		<c:choose>
+			<c:when test="${login.id eq null}">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="./Login.do">로그인</a></li>
+				</ul>
+			</c:when>
+			<c:otherwise>
+					<!-- <ul class="dropdown-menu" role="menu">
+						<li><a href="#">마이 페이지</a></li>
+						<li><a href="#">로그아웃</a></li>
+					</ul> -->
+					
+					<ul class="nav navbar-nav navbar-right">
+					<li role="presentation" class="dropdown">
+					<a	class="dropdown-toggle" data-toggle="dropdown" href="#"
+					role="button" aria-expanded="false"> ${login.id} <span class="caret"></span>
+					</a>
+					 <ul class="dropdown-menu" role="menu">
+					<li><a href="#">마이 페이지</a></li>
+						<li><a href="./Logout.do">로그아웃</a></li>
+					</ul>
+					</li>
+					</ul>
+		
+			</c:otherwise>
+		</c:choose>
 	</div>
 	<!-- /.navbar-collapse -->
 </div>

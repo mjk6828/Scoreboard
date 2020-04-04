@@ -10,4 +10,5 @@ import egovframework.rte.psl.dataaccess.mapper.Mapper;
 public interface MemberDAO {
 
 	List<MemberVO> memberlist() throws Exception;
+	MemberVO memberone(MemberVO vo) throws Exception;
 }

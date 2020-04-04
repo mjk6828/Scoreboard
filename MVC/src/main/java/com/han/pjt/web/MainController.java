@@ -1,16 +1,17 @@
 package com.han.pjt.web;
 
-import java.util.*;
+import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.han.pjt.service.MemberService;
 import com.han.pjt.vo.MemberVO;
@@ -40,17 +41,31 @@ public class MainController {
 		return "Main";
 	}
 	@RequestMapping("/Login.do")
-	public String Login(Model model, MemberVO vo) {
-		
+	public String Login(Model model, MemberVO vo, HttpSession session, HttpServletRequest request) {
+		HttpSession httpsession = request.getSession();
 		return "member/loginForm";
 	}
 
 	
-/*	@RequestMapping(value = "/search.do", method=RequestMethod.POST)
-	@ResponseBody
-	public String search(HttpServletResponse response) throws Exception{
-		log.info("호출되나요");
+	@RequestMapping(value = "/LoginForm.do", method=RequestMethod.POST)
+	public String loginform(Model model, MemberVO vo, HttpSession session, HttpServletRequest request) throws Exception{
+		log.info("로그인 페이지");
+		MemberVO mvo = memberService.memberone(vo);
+		HttpSession httpsession = request.getSession();
+		if(vo.getPass().equals(mvo.getPass())) {
+			log.info("로그인 성공");
+			httpsession.setAttribute("login", mvo);
+			return "rediect:/Login.do";
+		}else {
+			log.info("로그인 실패");
+			return "rediect:/Login.do";
+		}
+	}
+	@RequestMapping(value = "/Logout.do")
+	public String logout(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
 		
-		return "ajax호출";
-	}*/
+		HttpSession httpsession = request.getSession();
+		httpsession.removeAttribute("login");
+		return "redirect:/Main.do";
+	}
 }
