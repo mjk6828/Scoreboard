@@ -23,7 +23,8 @@ span {
 	padding-top: 5px;
 	margin-right: 10px;
 }
-th{
+
+th {
 	text-align: center;
 }
 </style>
@@ -37,14 +38,14 @@ th{
 			</div>
 			<div class="panel-body">
 				<span style="float: left;">영화</span>
-							<div class="dropdown" >
+				<div class="dropdown">
 					<select class="form-control" id="cinema">
-						
+
 					</select>
 
 				</div>
-				<span style="float: left;">지역</span> 
-								<div class="dropdown">
+				<span style="float: left;">지역</span>
+				<div class="dropdown">
 					<select class="form-control" id="location">
 						<option value="alllocation">전체</option>
 						<option value="seoul">서울</option>
@@ -56,7 +57,7 @@ th{
 					</select>
 
 				</div>
-				 <span style="float: left;">극장</span>	
+				<span style="float: left;">극장</span>
 				<div class="dropdown">
 					<select class="form-control" id="theater">
 						<option value="alltheater">전체</option>
@@ -68,7 +69,7 @@ th{
 					</select>
 
 				</div>
-			<span style="float: left;">구분</span>
+				<span style="float: left;">구분</span>
 				<div class="dropdown">
 					<select class="form-control" id="division">
 						<option value="alldivision">전체</option>
@@ -97,11 +98,17 @@ th{
 					</select>
 
 				</div>
-
-				<button class="btn btn-danger pull-right" style="float: rigth;">엑셀출력</button>
-				<button class="btn btn-primary pull-right" style="float: rigth;"
+				<!-- <input type="file" class="btn btn-primary pull-right" style="float:right;" value="엑셀출력"> -->
+				<!-- <button class="btn btn-danger pull-right" style="float: right;" type="file">엑셀출력</button> -->
+				<form id="excelUploadForm" name="excelUploadForm"
+					enctype="multipart/form-data" method="post" action="./ExcelUpload">
+					<input id="excelFile" type="file" name="excelFile" style="float:right; margin-top:10px;" value = "엑셀출력">
+					<button class="btn btn-danger pull-right" style="float: right;" type="submit">업로드</button>
+					<button class="btn btn-primary pull-right" style="float: rigth;"
 					type="button" onclick="SearchFunction()">검색</button>
+				</form>
 
+				
 			</div>
 		</div>
 		<table class="table" id="list" style="text-align: center;">
