@@ -9,4 +9,5 @@ public interface BoardService {
 
 	List<BoardVO> boardlist(SelectVO svo) throws Exception;
 	int boardcount() throws Exception;
+	
 }
