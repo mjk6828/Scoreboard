@@ -72,7 +72,7 @@ public class JsonController {
 			//FileUtils.delete(destFile.getAbsolutePath());
 			ModelAndView mv = new ModelAndView();
 			mv.setViewName("");
-			return mv;
+			
 			
 		}
 		return mv;

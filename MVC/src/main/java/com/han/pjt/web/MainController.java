@@ -41,31 +41,28 @@ public class MainController {
 		return "Main";
 	}
 	@RequestMapping("/Login.do")
-	public String Login(Model model, MemberVO vo, HttpSession session, HttpServletRequest request) {
-		HttpSession httpsession = request.getSession();
+	public String Login(Model model, MemberVO vo, HttpSession session) {
+		
 		return "member/loginForm";
 	}
 
 	
 	@RequestMapping(value = "/LoginForm.do", method=RequestMethod.POST)
-	public String loginform(Model model, MemberVO vo, HttpSession session, HttpServletRequest request) throws Exception{
+	public String loginform(Model model, MemberVO vo, HttpSession session) throws Exception{
 		log.info("로그인 페이지");
 		MemberVO mvo = memberService.memberone(vo);
-		HttpSession httpsession = request.getSession();
 		if(vo.getPass().equals(mvo.getPass())) {
 			log.info("로그인 성공");
-			httpsession.setAttribute("login", mvo);
-			return "rediect:/Login.do";
+			session.setAttribute("login", mvo);
+			return "member/loginOK";
 		}else {
 			log.info("로그인 실패");
-			return "rediect:/Login.do";
+			return "member/loginErr";
 		}
 	}
 	@RequestMapping(value = "/Logout.do")
-	public String logout(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
-		
-		HttpSession httpsession = request.getSession();
-		httpsession.removeAttribute("login");
+	public String logout(HttpSession session) {
+		session.invalidate();
 		return "redirect:/Main.do";
 	}
 }
