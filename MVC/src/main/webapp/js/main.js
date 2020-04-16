@@ -40,3 +40,24 @@ function SearchFunction(){
 		
 	});
 };
+
+$(document).ready(function(){
+	$('#file').change(function(){
+		alert('엑셀 start');
+		var form = $('#excelForm')[0];
+		var data = new FormData(form);
+		
+		$.ajax({
+			enctype:"multipart/form-data",
+			method:"post",
+			url:"./excelUpload.do",
+			processData:false,
+			cache:false,
+			data:data,
+			success:function(result){
+				alert('업로드 성공');
+			}
+		});
+		
+	});
+});
