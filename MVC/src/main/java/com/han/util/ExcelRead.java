@@ -1,240 +1,104 @@
 package com.han.util;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
-import com.han.pjt.vo.ExcelVO;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 
 public class ExcelRead {
 
 	// xls 파일을 분석해 List<ExcelVO> 객체로 반환
 	// @param filePath
 
-	public List<ExcelVO> xlsToExcelVOList(String filePath) {
-		// 반환할 객체 생성
-		List<ExcelVO> list = new ArrayList<ExcelVO>();
+	public static List<Map<String, String>> read(ExcelReadOption excelReadOption) {
+		// 엑셀 파일 자체
+		// 엑셀파일을 읽어 들인다.
+		// FileType.getWorkbook() <-- 파일의 확장자에 따라서 적절하게 가져온다.
+		Workbook wb = ExcelFileType.getWorkbook(excelReadOption.getFilePath());
 
-		FileInputStream fis = null;
-		HSSFWorkbook wb = null;
+		int sheetNum = wb.getNumberOfSheets(); // 시트 수를 가져오기위한 변수
+		int numOfCells = 0;
 
-		try {
+		Row row = null;
+		Cell cell = null;
 
-			fis = new FileInputStream(filePath);
-			// HSSFWorkbook은 엑셀 파일 전체 내용을 담고 있는 객체
-			wb = new HSSFWorkbook(fis);
+		String cellName = "";
 
-			// 탐색에 사용할 Sheet, Row, Cell 객체
-			HSSFSheet sheet;
-			HSSFRow row;
-			HSSFCell cell;
-			ExcelVO vo;
+		/**
+		 * 각 row마다의 값을 저장할 맵 객체 저장되는 형식은 다음과 같다. put("A", "이름"); put("B", "게임명");
+		 */
+		Map<String, String> map = null;
+		/*
+		 * 각 Row를 리스트에 담는다. 하나의 Row를 하나의 Map으로 표현되며 List에는 모든 Row가 포함될 것이다.
+		 */
+		List<Map<String, String>> result = new ArrayList<Map<String, String>>();
 
-			// Sheet 탐색 for 문
-			for (int sheetIndex = 0; sheetIndex < wb.getNumberOfSheets(); sheetIndex++) {
-				// 현재 Sheet 반환
-				sheet = wb.getSheetAt(sheetIndex);
+		for (int i = 0; i < sheetNum; i++) {
+			System.out.println("Sheet 이름: " + wb.getSheetName(i));
+			Sheet sheet = wb.getSheetAt(i);
 
-				// row 탐색 for 문
-				for (int rowIndex = 0; rowIndex < sheet.getPhysicalNumberOfRows(); rowIndex++) {
-					// row 0은 헤더정보이기 때문에 무시
-					if (rowIndex != 0) {
-						// 현재 row 반환
-						row = sheet.getRow(rowIndex);
-						vo = new ExcelVO();
-						String value;
+			int numOfRows = sheet.getPhysicalNumberOfRows();
 
-						// row의 첫번째 cell값이 비어있지 않은 경우에만 cell 탐색
-						if (!"".equals(row.getCell(0).getStringCellValue())) {
+			/**
+			 * sheet에서 유효한(데이터가 있는) 행의 개수를 가져온다.
+			 */
 
-							// cell 탐색 포문
-							for (int cellIndex = 0; cellIndex < row.getPhysicalNumberOfCells(); cellIndex++) {
-								cell = row.getCell(cellIndex);
+			/**
+			 * 각 Row만큼 반복을 한다.
+			 */
+			for (int rowIndex = excelReadOption.getStartRow() - 1; rowIndex < numOfRows; rowIndex++) {
+				/*
+				 * 워크북에서 가져온 시트에서 rowIndex에 해당하는 Row를 가져온다. 하나의 Row는 여러개의 Cell을 가진다.
+				 */
+				row = sheet.getRow(rowIndex);
 
-								if (true) {
-									value = "";
-									// cell 스타일이 다르더라도 String으로 반환받음
-									switch (cell.getCellType()) {
-									case HSSFCell.CELL_TYPE_FORMULA:
-										value = cell.getCellFormula();
-										break;
-									case HSSFCell.CELL_TYPE_NUMERIC:
-										value = cell.getNumericCellValue() + "";
-										break;
-									case HSSFCell.CELL_TYPE_STRING:
-										value = cell.getStringCellValue() + "";
-										break;
-									case HSSFCell.CELL_TYPE_BLANK:
-										value = cell.getBooleanCellValue() + "";
-										break;
-									case HSSFCell.CELL_TYPE_ERROR:
-										value = cell.getErrorCellValue() + "";
-										break;
-									default:
-										value = new String();
-										break;
-									}
-
-									// 현재 column index에 따라서 vo에 입력
-									switch (cellIndex) {
-
-									case 0: // 아이디
-										vo.setCustId(value);
-										break;
-									case 1: // 이름
-										vo.setCustName(value);
-										break;
-									case 2: // 나이
-										vo.setCustAge(value);
-										break;
-									case 3: // 이메일
-										vo.setCustEmail(value);
-										break;
-
-									default:
-										break;
-									}
-								}
-							}
-							// cell탐색 이후 vo 추가
-							list.add(vo);
+				if (row != null) {
+					/*
+					 * 가져온 Row의 Cell의 개수를 구한다.
+					 */
+					numOfCells = row.getPhysicalNumberOfCells();
+					/*
+					 * 데이터를 담을 맵 객체 초기화
+					 */
+					map = new HashMap<String, String>();
+					/*
+					 * cell의 수 만큼 반복한다.
+					 */
+					for (int cellIndex = 0; cellIndex < numOfCells; cellIndex++) {
+						/*
+						 * Row에서 CellIndex에 해당하는 Cell을 가져온다.
+						 */
+						cell = row.getCell(cellIndex);
+						/*
+						 * 현재 Cell의 이름을 가져온다 이름의 예 : A,B,C,D,......
+						 */
+						cellName = ExcelCellRef.getName(cell, cellIndex);
+						/*
+						 * 추출 대상 컬럼인지 확인한다 추출 대상 컬럼이 아니라면, for로 다시 올라간다
+						 */
+						if (!excelReadOption.getOutputColumns().contains(cellName)) {
+							continue;
 						}
+						/*
+						 * map객체의 Cell의 이름을 키(Key)로 데이터를 담는다.
+						 */
+						map.put(cellName, ExcelCellRef.getValue(cell));
 					}
-				}
-			}
+					/*
+					 * 만들어진 Map객체를 List로 넣는다.
+					 */
+					result.add(map);
 
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				// 사용한 자원은 finally에서 해제
-				if (wb != null)
-					wb.close();
-				if (fis != null)
-					fis.close();
-			} catch (IOException e) {
-				e.printStackTrace();
+				}
+
 			}
 		}
-		return list;
-	}
-
-	// 이번엔 xlsx 파일 ^^
-	public List<ExcelVO> xlsxToExcelVOList(String filePath) {
-		// 반환 객체 생성
-		List<ExcelVO> list = new ArrayList<ExcelVO>();
-
-		FileInputStream fis = null;
-		XSSFWorkbook wb = null;
-
-		try {
-			fis = new FileInputStream(filePath);
-			// HSSFWorkbook은 엑셀파일 전체 내용을 담고 있는 객체
-			wb = new XSSFWorkbook(fis);
-
-			// 탐색에 사용할 Sheet, Row, Cell 객체
-			XSSFSheet sheet;
-			XSSFRow row;
-			XSSFCell cell;
-			ExcelVO vo;
-
-			// sheet 탐색 for 문
-			for (int sheetIndex = 0; sheetIndex < wb.getNumberOfSheets(); sheetIndex++) {
-				// guswo sheet 반환
-				sheet = wb.getSheetAt(sheetIndex);
-				// row 탐색 for문
-				for (int rowIndex = 0; rowIndex < sheet.getPhysicalNumberOfRows(); rowIndex++) {
-					// row 0은 헤더정보이기때문에 무시
-					row = sheet.getRow(rowIndex);
-					vo = new ExcelVO();
-					String value;
-
-					// row의 첫번째 cell값이 비어있지 않은 경우만 cell탐색
-					if (!"".equals(row.getCell(0).getStringCellValue())) {
-						// cell 탐색 for 문
-						for (int cellIndex = 0; cellIndex < row.getPhysicalNumberOfCells(); cellIndex++) {
-							cell = row.getCell(cellIndex);
-
-							if (true) {
-								value = "";
-								// cell 스타일이 다르더라도 String으로 반환 받음
-								switch (cell.getCellType()) {
-								case HSSFCell.CELL_TYPE_FORMULA:
-									value = cell.getCellFormula();
-									break;
-								case HSSFCell.CELL_TYPE_NUMERIC:
-									value = cell.getNumericCellValue() + "";
-									break;
-								case HSSFCell.CELL_TYPE_STRING:
-									value = cell.getStringCellValue() + "";
-									break;
-								case HSSFCell.CELL_TYPE_BLANK:
-									value = cell.getBooleanCellValue() + "";
-									break;
-								case HSSFCell.CELL_TYPE_ERROR:
-									value = cell.getErrorCellValue() + "";
-									break;
-								default:
-									value = new String();
-									break;
-								}
-
-								switch (cellIndex) {
-								case 0: // 아이디
-									vo.setCustId(value);
-									;
-									break;
-
-								case 1: // 이름
-									vo.setCustName(value);
-									;
-									break;
-
-								case 2: // 나이
-									vo.setCustAge(value);
-									break;
-
-								case 3: // 이메일
-									vo.setCustEmail(value);
-									break;
-
-								default:
-									break;
-								}
-							}
-						}
-						list.add(vo);
-					}
-				}
-			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				// 자원 해제
-				if (wb != null)
-					wb.close();
-				if (fis != null)
-					fis.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		return list;
+			return result;
+		
 	}
 }
