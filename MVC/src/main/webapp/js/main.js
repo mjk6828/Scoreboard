@@ -41,23 +41,49 @@ function SearchFunction(){
 	});
 };
 
-$(document).ready(function(){
-	$('#file').change(function(){
-		alert('엑셀 start');
+/*function excelupload(){
+		console.log('excelupload')
 		var form = $('#excelForm')[0];
 		var data = new FormData(form);
 		
+		data.append("fileObj",$('#excelFile')[0].files[0]);
+		console.log(data);
 		$.ajax({
 			enctype:"multipart/form-data",
 			method:"post",
-			url:"./excelUpload.do",
+			url:"./ExcelUpload.do",
 			processData:false,
 			cache:false,
 			data:data,
+			dataType:"json",
+			contentType: "application/json",
 			success:function(result){
 				alert('업로드 성공');
+			},
+			error: function(xhr,status,error){
+				alert(error);
 			}
 		});
+}*/
+
+$(function(){
+	$('#excelup').click(function(){
+		var formData = new FormData();
+		formData.append("excelFile",$('input[name=excelFile]')[0].files[0]);
 		
+		$.ajax({
+			url : "./ExcelUpload.do",
+			data : formData,
+			processData : false,
+			contentType : false,
+			type : "POST",
+			success : function(data){
+				console.log('업로드성공');
+				console.log(data);
+			},error : function(xhr, status, error){
+				console.log(error);
+			}
+		});
 	});
 });
+

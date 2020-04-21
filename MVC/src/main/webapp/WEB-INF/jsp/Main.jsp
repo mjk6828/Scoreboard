@@ -100,14 +100,19 @@ th {
 				</div>
 				<!-- <input type="file" class="btn btn-primary pull-right" style="float:right;" value="엑셀출력"> -->
 				<!-- <button class="btn btn-danger pull-right" style="float: right;" type="file">엑셀출력</button> -->
-				<form id="excelForm" name="excelForm" 	enctype="multipart/form-data" method="post" action="./ExcelUpload.do">
-					<input id="excelFile" type="file" name="excelFile" style="float:right; margin-top:10px;" value = "엑셀업로드">
-					<button class="btn btn-danger pull-right" style="float: right;" type="submit">업로드</button>
+				<form id="excelForm" name="excelForm" enctype="multipart/form-data"
+					method="post" action="./ExcelUpload.do">
+					<input id="excelFile" type="file" name="excelFile"
+						style="float: right; margin-top: 10px;" value="엑셀업로드">
+
+					<button class="btn btn-danger pull-right" style="float: right;"
+						type="button" id="excelup">업로드</button>
+
 					<button class="btn btn-primary pull-right" style="float: rigth;"
-					type="button" onclick="SearchFunction()">검색</button>
+						type="button" onclick="SearchFunction()">검색</button>
 				</form>
 
-				
+
 			</div>
 		</div>
 		<table class="table" id="list" style="text-align: center;">
