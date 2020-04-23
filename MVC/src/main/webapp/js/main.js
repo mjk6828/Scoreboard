@@ -76,10 +76,25 @@ $(function(){
 			data : formData,
 			processData : false,
 			contentType : false,
+			dataType : "json",
 			type : "POST",
 			success : function(data){
 				console.log('업로드성공');
-				console.log(data);
+				var table = document.getElementById("table");
+				table.innerHTML = "";
+				for(var i=0; i<data.length; i++){
+					var item = data[i];
+					console.log(data.length);
+					console.log(item)
+					console.log(item.length);
+					var dataa = JSON.stringify(data);
+					var row = table.insertRow(0);
+						for(var j=0; j<data[i].length; j++){
+							
+							var cell = row.insertCell(j);
+							cell.innerHTML = dataa[i][j].value;
+						}
+				}
 			},error : function(xhr, status, error){
 				console.log(error);
 			}

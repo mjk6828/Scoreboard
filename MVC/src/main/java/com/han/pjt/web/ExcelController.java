@@ -3,8 +3,11 @@ package com.han.pjt.web;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -41,7 +44,7 @@ public class ExcelController {
 		if(excelFile == null || excelFile.isEmpty()) {
 			throw new RuntimeException("엑셀파일 선택좀;");
 		}
-		File destFile = new File("D:\\"+excelFile.getOriginalFilename());
+		File destFile = new File("D:\\excel\\"+excelFile.getOriginalFilename());
 		try {
 			excelFile.transferTo(destFile);
 		}catch (IllegalStateException | IOException e) {
@@ -54,7 +57,6 @@ public class ExcelController {
         excelReadOption.setStartRow(2);
 		
 		List<Map<String, String>> excelContent = ExcelRead.read(excelReadOption);
-		
 		for(Map<String, String> article: excelContent) {
 			log.info(article.get("A"));
 			log.info(article.get("B"));
@@ -62,6 +64,7 @@ public class ExcelController {
 			log.info(article.get("D"));
 			log.info(article.get("E"));
 			log.info(article.get("F"));
+
 		}
 		//excelService.uploadExcelFile(destFile);
 		return excelContent;
