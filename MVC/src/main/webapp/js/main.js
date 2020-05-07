@@ -82,18 +82,22 @@ $(function(){
 				console.log('업로드성공');
 				var table = document.getElementById("table");
 				table.innerHTML = "";
+				var rowlen = table.rows.length;
+				console.log(rowlen);
+				var row = table.insertRow(rowlen-1);
+				
 				for(var i=0; i<data.length; i++){
 					var item = data[i];
 					console.log(data.length);
 					console.log(item)
-					console.log(item.length);
 					var dataa = JSON.stringify(data);
-					var row = table.insertRow(0);
-						for(var j=0; j<data[i].length; j++){
-							
-							var cell = row.insertCell(j);
-							cell.innerHTML = dataa[i][j].value;
-						}
+					console.log(dataa);
+					console.log(item.A);
+						row.insertCell(0).innerHTML=item.A;
+						row.insertCell(1).innerHTML=item.B;
+						row.insertCell(2).innerHTML=item.C;
+						row.insertCell(3).innerHTML=item.D;
+					
 				}
 			},error : function(xhr, status, error){
 				console.log(error);

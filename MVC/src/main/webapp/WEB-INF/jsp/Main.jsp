@@ -55,8 +55,8 @@ th {
 						<option value="daejun">대전,충청</option>
 						<option value="gwangju">광주,호남</option>
 					</select>
-
 				</div>
+				
 				<span style="float: left;">극장</span>
 				<div class="dropdown">
 					<select class="form-control" id="theater">
@@ -67,8 +67,8 @@ th {
 						<option value="free">프리머스</option>
 						<option value="normal">일반</option>
 					</select>
-
 				</div>
+				
 				<span style="float: left;">구분</span>
 				<div class="dropdown">
 					<select class="form-control" id="division">
